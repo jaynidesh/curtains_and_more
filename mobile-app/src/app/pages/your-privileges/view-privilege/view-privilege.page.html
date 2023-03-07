@@ -1,0 +1,89 @@
+
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/membership">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+<div class="header">
+  <div class="toolbar-wrapper">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button
+        text=""
+        defaultHref="/tabs/membership">
+        </ion-back-button>
+        </ion-buttons>
+      <ion-title class="ion-text-center">
+        <img src="assets/images/le-club-logo.png" alt="">
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</div>
+<div class="content paddingBottom0" *ngIf="pageContent">
+  <div class="title">
+    <h1>{{ pageContent.name }}</h1>
+  </div>
+  <div class="description">
+    <p [innerHTML]="pageContent.description"></p>
+    <!-- <ng-container *ngFor="let description of pageContent.description">
+      <p [innerHTML]="description"></p>
+    </ng-container> -->
+    
+  </div>
+</div>
+  <div class="content" *ngIf="pageContent && pageContent.collaborators">
+    <div class="title">
+      <h1>Our collaborators</h1>
+    </div>
+    <ion-searchbar [(ngModel)]="filterTerm"></ion-searchbar>
+    <div class="callaborators">
+      <ion-card *ngFor="let collaborator of pageContent.collaborators | filter:filterTerm">
+        <img [src]="collaborator.logo" alt="">
+        <ion-card-header>
+          <ion-card-title>{{ collaborator.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p *ngFor="let discount of collaborator.discount">
+            <span>{{ discount.percentage }} </span>{{ discount.text }}
+          </p>
+        </ion-card-content>
+        <ion-footer *ngIf="pageContent.form">
+          <ion-button size="small" (click)="bookNow(pageContent, collaborator.name)">BOOK</ion-button>
+        </ion-footer>
+      </ion-card>
+      <!-- <div class="collaborator" *ngFor="let collaborator of pageContent.collaborators">
+        <img [src]="collaborator.logo" alt="">
+        <div class="discount-content">
+          <h4>{{ collaborator.name }}</h4>
+        <div class="discount">
+          <p *ngFor="let discount of collaborator.discount">
+            <span>{{ discount.percentage }} </span>{{ discount.text }}
+          </p>
+        </div>
+        </div>
+        <ion-button>BOOK</ion-button>
+      </div> -->
+      
+    </div>
+</div>
+<div class="emblem">
+<img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

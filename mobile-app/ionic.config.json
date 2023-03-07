@@ -1,0 +1,7 @@
+{
+  "name": "le-club-app",
+  "type": "angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

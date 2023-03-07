@@ -1,0 +1,77 @@
+
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/exclusive-access">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+<div class="header">
+  <div class="toolbar-wrapper">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button
+        text=""
+        defaultHref="/tabs/exclusive-access">
+        </ion-back-button>
+        </ion-buttons>
+      <ion-title class="ion-text-center">
+        <img src="assets/images/le-club-logo.png" alt="">
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</div>
+<h1>Exclusive Access</h1>
+<div class="content paddingBottom0">
+  <div class="logo">
+    <img alt="" src="{{ pageContent?.logo }}" /><br/>
+    <p>{{ pageContent?.name }}<span *ngIf="pageContent?.name">,</span><br/>
+      {{ pageContent?.address }}</p>
+  </div>
+  <div class="description">
+    {{ pageContent?.description }}
+    <!-- <ng-container *ngFor="let description of pageContent.description">
+      <p [innerHTML]="description"></p>
+    </ng-container> -->
+    
+  </div>
+  <div class="buttons" *ngIf="pageContent?.rsvp || pageContent?.rsvpNonMember">
+    <ion-button size="small" (click)="goToRSVPLink(pageContent)">BOOK NOW</ion-button>
+  </div>
+  <div class="membersPass" *ngIf="pageContent?.additional_info">
+    <div class="title">Member's Exclusive Day Pass</div>
+    <div class="list">
+      <div *ngFor="let additionalInfo of pageContent?.additional_info">
+        <h5>{{ additionalInfo.name }}</h5>
+          <p *ngFor="let text of additionalInfo.text_item">
+            {{ text.text }}
+          </p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="footerImg">
+    <img alt="" src="{{ pageContent?.image }}" />
+  </div>
+</div>
+  
+<div class="emblem">
+<img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

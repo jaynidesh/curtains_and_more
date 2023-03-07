@@ -1,0 +1,203 @@
+
+ion-header {
+    top: -76px;
+    height: 0;
+    transition: all linear 0.2s;
+    ion-toolbar {
+        --opacity:1;
+      height: 80px;
+      --height: 80px;
+      --min-height: 80px;
+      min-height: 80px;
+      --max-height: 80px;
+      max-height: 80px;
+      border: none;
+      --border-width: 0;
+  
+      ion-title {
+        img {
+          width: auto;
+          height: 40px;
+        }
+      }
+  
+      ion-buttons {
+        margin: 0 20px;
+      }
+    }
+  }
+
+  ion-content {
+    --background: none;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+
+    h1{
+      margin-bottom: 0;
+    }
+
+    ion-searchbar{
+      padding:0;
+    }
+  
+    .toolbar-wrapper {
+      position: relative;
+      width: 100%;
+      margin-top: 40px;
+  
+      ion-toolbar {
+        height: 55px;
+        --background: transparent;
+        --height: 55px;
+        --min-height: 55px;
+  
+        ion-buttons {
+            &[slot="end"]{
+                margin-right: 20px;
+            }
+            &[slot="start"]{
+                margin-left: 20px;
+            }
+          }
+  
+        ion-title {
+          height: auto !important;
+  
+          img {
+            width: 150px;
+          }
+        }
+      }
+    }
+  
+    .content {
+        padding: 7.5vw;
+
+        &.paddingBottom0{
+          padding-bottom: 0;
+        }
+      // display: grid;
+      // height: 100%;
+      // align-items: top;
+      // align-content: top;
+
+      .title{
+        h2{
+            font-family: "Baskerville";
+            font-weight: bold;
+            font-size: 23px;
+            margin: 0;
+            color: #e1c19d;
+        }
+        h3{
+            font-family: "Baskerville";
+            font-size: 18px;
+            margin: 4px 0 0;
+            color: #e1c19d;
+
+        }
+      }
+
+      .description{
+        margin-top: 25px;
+        font-family: "Baskerville";
+        font-size: 16px;
+        line-height: 1.4;
+        color: #4d4d4f;
+        p{
+            margin-top: 0;
+            white-space: pre-line;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+      }
+
+      ion-card{
+        margin: 0;
+      }
+
+      .callaborators{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+
+        ion-card{
+          position: relative;
+          padding: 10px 0 46px;
+
+          img{
+
+          }
+
+          ion-card-header{
+            padding: 0 10px;
+            margin-bottom: 10px;
+            ion-card-title{
+              font-family: "Baskerville";
+              font-size: 14px;
+              font-weight: bold;
+              text-align: center;
+              color: #4d4d4f;
+              text-align: center;
+            }
+          }
+          ion-card-content{
+            padding: 0 10px;
+            margin-bottom: 10px;
+            P{
+              font-family: "Baskerville";
+              font-size: 12px;
+              color: #4d4d4f;
+              margin-bottom: 5px;
+              text-align: center;
+              span{
+                color: #e0c09b;
+              }
+            }
+            
+
+          }
+          ion-footer{
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+
+            ion-button{
+              --color:#ffffff;
+            }
+          }
+        }
+        .collaborator{
+            border: 1px solid #e1c19d;
+            border-radius: 10px;
+            img{
+
+            }
+
+            .discount-content{
+                padding: 10px;
+                h4{
+
+                }
+
+                .discount{
+
+                    span{
+
+                    }
+                }
+            }
+
+            ion-button{
+
+            }
+        }
+      }
+  
+    }
+  
+  }
+  

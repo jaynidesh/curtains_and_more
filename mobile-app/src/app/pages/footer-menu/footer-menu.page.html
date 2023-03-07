@@ -1,0 +1,28 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom" color="primary">
+    <ion-tab-button tab="home">
+      <ion-icon name="icon-home"></ion-icon>
+      <ion-label>HOME</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="icon-about"></ion-icon>
+      <ion-label>ABOUT</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="events">
+      <ion-icon name="icon-events"></ion-icon>
+      <ion-label>EVENTS</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="goToProfilePage('my-profile')">
+      <ion-icon name="icon-myprofile"></ion-icon>
+      <ion-label>MY PROFILE</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="contact">
+      <ion-icon name="icon-contact"></ion-icon>
+      <ion-label>CONTACT</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

@@ -1,0 +1,62 @@
+ion-tab-button:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    background: white;
+    width: 1px;
+    height: 70%;
+    top: 15%;
+}
+
+ion-tab-button:nth-child(5):after {
+    content: none;
+}
+
+ion-tab-button {
+    position: relative;
+}
+
+ion-tab-button ion-icon{
+    font-size: 5vw;
+    margin: 0 auto;
+}
+
+ion-tab-button ion-label {
+    margin-top: 5px;
+    color: #ffffff;
+    font-weight: 100;
+    font-family: Monsterat, Arial;
+    font-size: 2.9vw;
+}
+
+ion-toast.custom-toast {
+    --background: #F4F4FA;
+    --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    --color: #4b4a50;
+  }
+      
+  ion-toast.custom-toast::part(message) {
+    font-style: italic;
+  }
+  
+  .toast-content {
+    border-right: 1px solid #d2d2d2;
+    color: #030207;
+    font-size: 15px;
+  }
+
+  ion-toast::part(button) {
+    height: auto;
+    width: auto;
+    font-size: 1.6em; // this sets actual icon size
+  }
+
+  .logo{
+    width: 100%;
+    margin-top: 64px;
+    img{
+        width: 167px;
+        display: block;
+        margin: 0 auto;
+    }
+}

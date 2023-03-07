@@ -1,0 +1,33 @@
+<div class="accordion-container" (click)="toggleAccordion()" [ngClass]="isListItemOpened ? 'open' : ''">
+  <h4>
+    {{ name }}
+    <div class="arrow"></div>
+  </h4>
+  
+  <div class="content">
+    <!-- <code>
+      <pre>
+        {{ description | json }}
+      </pre>
+    </code> -->
+    
+    <div class="privilege" *ngFor="let collaborator of toJson(description)">
+      <b>{{ collaborator.name }}: </b>
+      <span *ngFor="let discount of collaborator.discount">
+        {{ discount.percentage }} {{ discount.text }}
+      </span>
+  </div>
+    <!-- <p *ngFor="let desc of description">
+      <span class="name">
+        <pre>
+          <code>
+            {{ desc.value.name  | json}}
+          </code>
+        </pre>
+      </span>
+      <span *ngFor="let discount of desc.discount">
+        {{ discount.percentage }} {{ discount.text }}
+      </span>
+    </p> -->
+  </div>
+</div>

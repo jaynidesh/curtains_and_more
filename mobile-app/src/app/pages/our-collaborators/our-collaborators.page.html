@@ -1,0 +1,66 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/home">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button
+          text=""
+          defaultHref="/tabs/home">
+          </ion-back-button>
+          </ion-buttons>
+        
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Our Collaborators</h1>
+  <h5>Have a look at all our collaborators</h5>
+  <div class="content">
+    <!-- <ng-container *ngFor="let collaborators of allCollaborators">
+      <div class="collaborator" *ngIf="collaborators.collaborators">
+        <div class="name">{{ collaborators.name }} <div class="arrow"></div></div>
+        <div class="privilege" *ngFor="let collaborator of collaborators.collaborators">
+            <b>{{ collaborator.name }} </b>
+            <span *ngFor="let discount of collaborator.discount">
+              {{ discount.percentage }} {{ discount.text }}
+            </span>
+        </div>
+    </div>
+   
+    </ng-container> -->
+    <ng-container *ngFor="let collaborators of allCollaborators">
+      <app-accordion *ngIf="collaborators.collaborators"
+    name="{{ collaborators.name }}" description="{{ toString(collaborators.collaborators) }}"></app-accordion>
+    </ng-container>
+    
+  
+    
+    
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

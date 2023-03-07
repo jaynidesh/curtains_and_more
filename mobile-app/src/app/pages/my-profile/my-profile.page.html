@@ -1,0 +1,74 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_wrapper">
+
+      <div class="text_content">
+        <span>Name : </span> {{ userDetails?.first_name }} {{ userDetails?.last_name }}
+      </div>
+      <div class="text_content">
+        <span>Member ID : </span> {{ userDetails?.card_number }}
+      </div>
+      <div class="text_content" *ngIf="userDetails?.beneficiaries">
+        <span class="mb">Beneficiaries : </span>
+        <ng-container *ngFor="let beneficiary of userDetails?.beneficiaries">
+          <div *ngIf="beneficiary.status == 'active'">
+            {{ beneficiary.name }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="text_content" *ngIf="userDetails?.status">
+        <span>Status : </span> <ion-text *ngIf="userDetails?.status == 'active'" style="color:#50b424;">Active</ion-text><ion-text color="danger" *ngIf="userDetails?.status == 'inactive'">Not Active</ion-text>
+      </div>
+      <div class="text_content" *ngIf="userDetails?.user_type">
+        <span>Membership : </span> {{ userDetails?.user_type }}
+      </div>
+      <div class="logo-firm" *ngIf="userDetails?.related_company">
+        <img [src]="related_company" alt="">
+      </div>
+      <div class="qrCodeBlock" *ngIf="createdCode">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="col-1">
+              <img src="assets/images/my-profile/scan-image.png" class="scan-image" alt="">
+            </ion-col>
+            <ion-col class="col-2">
+              <ngx-qrcode [value]="createdCode" [margin]="0" [width]="qrWidth"></ngx-qrcode>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+      
+      <!-- <img [src]="data:image/png;base64, {{ encodeData }}" alt=""> -->
+      <!-- <pre>
+        <code>
+          {{ userDetails | json }}
+        </code>
+      </pre> -->
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/events">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button
+          text=""
+          defaultHref="/tabs/events">
+          </ion-back-button>
+          </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>{{ pageContent?.name }}</h1>
+  <div class="content">
+    <div class="upcoming-events" *ngIf="pageContent">
+      <ion-card mode="ios">
+        <img src="{{ pageContent?.banner }}" routerLink="view-event/02" />
+        <ion-card-content>
+          <div class="text-content">
+            {{ pageContent?.name }} <span *ngIf="!pageContent?.on_going">- {{ convertToDate(pageContent?.start_date) }}</span>
+          </div>
+          <div class="text-desc">
+            {{ pageContent?.description }}
+          </div>
+          <div class="buttons">
+            <ion-button size="small" *ngIf="pageContent?.on_going" (click)="goToRSVPLink(pageContent?.rsvp)">VIEW CALENDAR</ion-button>
+            <ion-button size="small" *ngIf="!pageContent?.on_going" (click)="goToRSVPLink(pageContent?.rsvp)">RSVP</ion-button>
+            <ion-button size="small" *ngIf="!pageContent?.on_going" (click)="addEventToCalendar()">ADD TO CALENDAR</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

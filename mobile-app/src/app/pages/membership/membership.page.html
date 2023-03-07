@@ -1,0 +1,113 @@
+
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/about">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button
+          text=""
+          defaultHref="/tabs/about">
+          </ion-back-button>
+          </ion-buttons>
+        
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Membership</h1>
+  <div class="content">
+    <div class="content_wrapper">
+      <div class="text-desc">
+        <p>Belong to a community full of life and packed with exclusive leisure and entertainment activities to embrace your personal life and professional career at their finest.</p>
+        <p>Adding to preferential discounted rates and offers, members get invitations to members only family and corporate events.</p>
+        <p>What we wish for is that our members grasp opportunities and make the most of their living.</p>
+      </div>
+    </div>
+    <div class="content_wrapper membership_list" *ngIf="content">
+      <ion-item lines="none" *ngFor="let membership of content | keyvalue; let i = index">
+        <div>
+          <h3>{{ membership.value.title }}</h3>
+          <p *ngIf="membership.value.price">{{ membership.value.price }}</p>
+          <ion-button size="small" [routerLink]="[ '/tabs/membership/view-membership',membership.key]">SEE PRIVILEGES</ion-button>
+        </div>
+      </ion-item>
+    </div>
+    <div class="content_wrapper" *ngIf="rate_chart?.active">
+      <h1>Rate Chart</h1>
+      <div class="rate_chart">
+        <img [src]="rate_chart.image" alt="">
+      </div>
+    </div>
+    <!-- <div class="content_wrapper membership-plan-text">
+      <p class="heading">Membership Plan</p>
+      <p>Register with our Semi-Annual Membership Plan and<br/>
+<span>receive 50% off the Registration Fee.</span></p>
+
+<p>Join with our Annual Membership Plan and your<br/>
+<span>Registration Fee will be waived.</span></p>
+    </div> -->
+    <div class="content_wrapper">
+      <div class="contact_form">
+        <h5>Fill in the details below to join Le Club:</h5>
+        <div class="form">
+          <form [formGroup]="contactForm" novalidate>
+            <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.first_name.errors">
+              <ion-input type="text" placeholder="Name*" formControlName="first_name"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControl.first_name.errors || ( errorControl.first_name.dirty || errorControl.first_name.touched ) && errorControl.first_name.errors ">This field is required.</ion-text>
+            <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.last_name.errors">
+              <ion-input type="text" placeholder="Surname*" formControlName="last_name"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControl.last_name.errors || ( errorControl.last_name.dirty || errorControl.last_name.touched ) && errorControl.last_name.errors ">This field is required.</ion-text>
+
+            <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.email.errors">
+              <ion-input type="email" placeholder="Email*" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControl.email.errors || ( errorControl.email.dirty || errorControl.email.touched ) && errorControl.email.errors ">This field is required.</ion-text>
+
+            <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.phone.errors">
+              <ion-input type="tel" placeholder="Phone*" formControlName="phone"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControl.phone.errors || ( errorControl.phone.dirty || errorControl.phone.touched ) && errorControl.phone.errors ">This field is required.</ion-text>
+
+            <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.message.errors">
+              <ion-textarea type="text" placeholder="message*" formControlName="message" rows="5"></ion-textarea>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControl.message.errors || ( errorControl.message.dirty || errorControl.message.touched ) && errorControl.message.errors ">This field is required.</ion-text>
+
+
+          <ion-item lines="none" class="btn">
+            <ion-button size="small" (click)="submitForm()">SEND</ion-button>
+          </ion-item>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

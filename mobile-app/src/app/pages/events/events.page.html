@@ -1,0 +1,62 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Live & Belong</h1>
+  <div class="content">
+    <div class="upcoming-events">
+      <ng-container *ngFor="let event of content | keyvalue; let i = index">
+        <ion-card mode="ios" *ngIf="event?.value.active">
+          <img src="{{ event.value.banner }}" routerLink="view-event/{{event.key}}" />
+          <ion-card-content>
+            <div class="text-content">
+              {{ event?.value.name }}  <span *ngIf="!event?.value.on_going">- {{ convertToDate(event?.value.start_date) }}</span>
+            </div>
+            <div class="buttons">
+              <ion-button size="small" routerLink="view-event/{{ event.key }}">KNOW MORE</ion-button> 
+              <ion-button size="small" *ngIf="event?.value.on_going" (click)="goToRSVPLink(event?.value.rsvp)">VIEW CALENDAR</ion-button>
+              <ion-button size="small" *ngIf="!event.value.on_going"  (click)="addEventToCalendar(event)">ADD TO CALENDAR</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+
+    
+    </div>
+    <!-- <div class="past-events">
+      <div class="image">
+        <img src="assets\images\events\past-events.jpg" alt="">
+      </div>
+      <div class="text-desc">
+        Le Club members receive invitations to private events and networking events. Our past events were designed with our members in mind to create opportunities where they would be able to make meaningful connections and carve some time from their busy lifestyle for themselves or to spend some quality time with their loved ones.
+      </div>
+      <div class="buttons">
+        <ion-button size="small">KNOW MORE</ion-button>
+      </div>
+    </div> -->
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

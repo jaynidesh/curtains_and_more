@@ -1,0 +1,178 @@
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <ion-list *ngIf="loggedIn">
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="inset" routerLink="/tabs/home" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                HOME
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/about" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                ABOUT US
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/events" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                EVENTS
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/our-collaborators" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                COLLABORATORS
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/your-privileges" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                PRIVILEGES
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/concierge-reservation" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                CONCIERGE
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" routerLink="/tabs/our-collaborators" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                CONTACT US
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+        </ion-list>
+        <ion-list>
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="inset" (click)="openLink('https://leclub.mu/privacy-policy-app/')" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                Privacy Policy
+              </ion-label>
+            </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+        <ion-list *ngIf="loggedIn">
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="inset" routerLink="/tabs/my-profile" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-label>
+                MY PROFILE
+              </ion-label>
+            </ion-item>
+            <ion-item lines="inset" (click)="logoutUser()">
+              <ion-label>
+                LOGOUT
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          </ion-list>
+
+          <ion-list *ngIf="!loggedIn">
+            <ion-menu-toggle autoHide="false">
+              <ion-item lines="inset" routerLink="/login" routerLinkActive="selected" routerDirection="root" detail="false">
+                <ion-label>
+                  ALREADY A MEMBER
+                </ion-label>
+              </ion-item>
+              <ion-item lines="none" routerLink="/tabs/home" routerLinkActive="selected" routerDirection="root" detail="false">
+                <ion-label>
+                  JUST A VISITOR
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+            </ion-list>
+          
+        <!-- <ion-list *ngIf="loggedIn">
+          <ion-list-header>
+            Account
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                Account
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="help"></ion-icon>
+              <ion-label>
+                Support
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="logout()" detail="false">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+
+        <ion-list *ngIf="!loggedIn">
+          <ion-list-header>
+            Account
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="log-in"></ion-icon>
+              <ion-label>
+                Login
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="help"></ion-icon>
+              <ion-label>
+                Support
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person-add"></ion-icon>
+              <ion-label>
+                Signup
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item>
+            <ion-icon slot="start" name="moon-outline"></ion-icon>
+            <ion-label>
+              Dark Mode
+            </ion-label>
+            <ion-toggle [(ngModel)]="dark"></ion-toggle>
+          </ion-item>
+        </ion-list>
+
+        <ion-list>
+          <ion-list-header>
+            Tutorial
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="openTutorial()" detail="false">
+              <ion-icon slot="start" name="hammer"></ion-icon>
+              <ion-label>Show Tutorial</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list> -->
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+
+</ion-app>

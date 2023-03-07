@@ -1,0 +1,116 @@
+
+ion-header {
+  top: -76px;
+  height: 0;
+  transition: all linear 0.2s;
+  ion-toolbar {
+      --opacity:1;
+    height: 80px;
+    --height: 80px;
+    --min-height: 80px;
+    min-height: 80px;
+    --max-height: 80px;
+    max-height: 80px;
+    border: none;
+    --border-width: 0;
+
+    ion-title {
+      img {
+        width: auto;
+        height: 40px;
+      }
+    }
+
+    ion-buttons {
+      margin: 0 20px;
+    }
+  }
+}
+  ion-content {
+    --background: none;
+    background: url('../../../assets/images/my-profile/vaco-drawing.jpg') bottom left no-repeat #ffffff;
+    background-size: cover;
+    background-position: fixed;
+  
+    .toolbar-wrapper {
+        width: 100%;
+        padding-top: 40px;
+        background: #ffffff;
+        padding-bottom: 20px;
+  
+      ion-toolbar {
+        height: 55px;
+        --background: transparent;
+        --height: 55px;
+        --min-height: 55px;
+  
+        ion-buttons {
+          margin-right: 20px;
+        }
+  
+        ion-title {
+          height: auto !important;
+  
+          img {
+            width: 150px;
+          }
+        }
+      }
+    }
+  
+    .content {
+      padding: 25px;
+      .content_wrapper{
+        background: #ffffff;
+        padding: 30px;
+
+        .text_content {
+          border: 1px solid grey;
+          padding: 10px 20px;
+          margin-bottom: 15px;
+          color: #4d4d4f;
+          font-family: 'Baskerville' !important;
+          font-size: 15px !important;
+          
+          span{
+            font-weight: bold;
+
+            &.mb{
+              display: block;
+              margin-bottom: 10px;
+            }
+          }
+
+          ion-text{
+            font-weight: bold;
+            padding-left: 10px;
+            position: relative;
+            &:before{
+              content:"•";
+              position: absolute;
+              left: 0;
+              font-size: 25px;
+              line-height: 0.7;
+            }
+          }
+
+          
+      }
+        pre{
+          margin: 0;
+        }
+      }
+    }
+
+    .logo-firm{
+      width: 10vw;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .scan-image{
+      // width: 85%;
+      // float: right;
+    }
+  }
+  

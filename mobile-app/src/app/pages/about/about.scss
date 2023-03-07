@@ -1,0 +1,114 @@
+
+ion-header {
+  top: -76px;
+  height: 0;
+  transition: all linear 0.2s;
+  ion-toolbar {
+      --opacity:1;
+    height: 80px;
+    --height: 80px;
+    --min-height: 80px;
+    min-height: 80px;
+    --max-height: 80px;
+    max-height: 80px;
+    border: none;
+    --border-width: 0;
+
+    ion-title {
+      img {
+        width: auto;
+        height: 40px;
+      }
+    }
+
+    ion-buttons {
+      margin: 0 20px;
+    }
+  }
+}
+ion-content {
+  --background: none;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+
+  .toolbar-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+
+    ion-toolbar {
+      height: 55px;
+      --background: transparent;
+      --height: 55px;
+      --min-height: 55px;
+
+      ion-buttons {
+        margin-right: 20px;
+      }
+
+      ion-title {
+        height: auto !important;
+
+        img {
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding: 0 7.5vw;
+    .text-desc {
+      font-family: "Baskerville";
+      font-size: 15px;
+      color: #343434;
+      margin-top: 10px;
+      white-space: pre-line;
+    }
+
+    ion-item{
+
+      --background:none;
+      --padding:0;
+      border: 1px solid #968470;
+      margin-bottom: 5px;
+      margin-top: 10px;
+
+      &.btn{
+          border: none;
+          --padding-start:none;
+      }
+
+      ion-button {
+          --background: #e2c09a;
+          --color: #ffffff;
+          --padding-top: 1em;
+          --padding-bottom: 1em;
+          --padding-start: 1em;
+          --padding-end: 1em;
+          font-family: "Roboto-regular";
+          width: 80px;
+          height: 33px;
+          font-size: 15px;
+        }
+
+        ion-text{
+          font-size: 10px;
+        }
+  }
+
+    .buttons {
+      margin-top: 15px;
+    padding: 0 7.5vw;
+    text-align: center;
+      ion-button {
+        --background: #e2c09a;
+        --color: #ffffff;
+        --padding-start: 25px;
+        --padding-end: 25px;
+        font-family: "Roboto-regular";
+      }
+    }
+  }
+}

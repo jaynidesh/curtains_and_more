@@ -1,0 +1,97 @@
+
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/concierge-reservation">
+      </ion-back-button>
+      </ion-buttons>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button
+          text=""
+          defaultHref="/tabs/concierge-reservation">
+          </ion-back-button>
+          </ion-buttons>
+        
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Booking Leisure</h1>
+  <h5>
+    We have a few questions that will enable us to book your ideal reservation.
+  </h5>
+  <div class="content">
+    <div class="content_wrapper">
+      <div class="booking_form">
+        <div class="form">
+          <form [formGroup]="hotelReservation" novalidate>
+          <ng-container formGroupName="form_data">
+            <ion-item formGroupName="item_A"  lines="none" [class.is-invalid]="submitted && errorControlDynamicForValue('form_data', 'item_A','errors')">
+              <ion-label position="floating">On which date do you which to access Choisy Les Bains Resort Clubhouse ? <span class="required">*</span></ion-label>
+              <ion-datetime placeholder="On which date do you which to access Choisy Les Bains Resort Clubhouse ?" [min]="todayDate" formControlName="rawValue" (ionChange)="returnOnlyDate($event, 'item_A')"></ion-datetime>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControlDynamicForValue('form_data', 'item_A','errors') || ( errorControlDynamicForValue('form_data', 'item_A','dirty') || errorControlDynamicForValue('form_data', 'item_A','touched') ) && errorControlDynamicForValue('form_data', 'item_A','errors') ">This field is required.</ion-text>
+   
+            <ion-item formGroupName="item_B" lines="none" [class.is-invalid]="submitted && errorControlDynamicForValue('form_data', 'item_B','errors')">
+              <ion-label position="floating">Which exclusive access best fit your needs? <span class="required">*</span></ion-label>
+              <ion-select interface="action-sheet" placeholder="Which exclusive access best fit your needs?" formControlName="value">
+                <ion-select-option value="Exclusive Day Pass without Room ( Rs 1,000 per person with Rs 750 F&B credit at Flavours Restaurant (minimum 4 persons for booking))">Exclusive Day Pass without Room ( Rs 1,000 per person with Rs 750 F&B credit at Flavours Restaurant (minimum 4 persons for booking))</ion-select-option>
+                <ion-select-option value="Exclusive Day Pass with Room (Rs2,975 per person with Rs 750 F&B credit at Flavours Restaurant (minimum 2 persons booking))">Exclusive Day Pass with Room (Rs2,975 per person with Rs 750 F&B credit at Flavours Restaurant (minimum 2 persons booking))</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControlDynamicForValue('form_data', 'item_B','errors') || ( errorControlDynamicForValue('form_data', 'item_B','dirty') || errorControlDynamicForValue('form_data', 'item_B','touched') ) && errorControlDynamicForValue('form_data', 'item_B','errors') ">This field is required.</ion-text>
+            
+           <ion-item formGroupName="item_C" lines="none" [class.is-invalid]="submitted && errorControlDynamicForValue('form_data', 'item_C','errors')">
+              <ion-label position="floating">Names of accompanied guests <span class="required">*</span></ion-label>
+              <ion-input type="text" placeholder="Names of accompanied guests" formControlName="value"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControlDynamicForValue('form_data', 'item_C','errors') || ( errorControlDynamicForValue('form_data', 'item_C','dirty') || errorControlDynamicForValue('form_data', 'item_C','touched') ) && errorControlDynamicForValue('form_data', 'item_C','errors') ">This field is required.</ion-text>
+  
+            <ion-item formGroupName="item_D" lines="none" [class.is-invalid]="submitted && errorControlDynamicForValue('form_data', 'item_D','errors')">
+              <ion-label position="floating">Do you or your guests have any dietary restrictions and/or allergies? <span class="required">*</span></ion-label>
+              <ion-input type="text" placeholder="Do you or your guests have any dietary restrictions and/or allergies?" formControlName="value"></ion-input>
+
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControlDynamicForValue('form_data', 'item_D','errors') || ( errorControlDynamicForValue('form_data', 'item_D','dirty') || errorControlDynamicForValue('form_data', 'item_D','touched') ) && errorControlDynamicForValue('form_data', 'item_D','errors') ">This field is required.</ion-text>
+  
+             <ion-item formGroupName="item_E" lines="none" [class.is-invalid]="submitted && errorControlDynamicForValue('form_data', 'item_E','errors')">
+              <ion-label position="floating">Any additional queries that you might have<span class="required">*</span></ion-label>
+              <ion-input placeholder="Any additional queries that you might have" formControlName="value"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf=" submitted && errorControlDynamicForValue('form_data', 'item_E','errors') || ( errorControlDynamicForValue('form_data', 'item_E','dirty') || errorControlDynamicForValue('form_data', 'item_E','touched') ) && errorControlDynamicForValue('form_data', 'item_E','errors') ">This field is required.</ion-text>
+  
+          </ng-container>
+
+          <ion-item lines="none" class="btn">
+            <ion-button size="small" (click)="submitForm()">SEND</ion-button>
+          </ion-item>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

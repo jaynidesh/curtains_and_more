@@ -1,0 +1,47 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <img src="assets/images/home-header.png" alt="">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Live & Belong</h1>
+  <div class="content">
+    <div class="links">
+      <ng-container *ngFor="let menu of menus | keyvalue; let i = index">
+        <div class="menu" (click)="goToLink(menu.value)" *ngIf="!menu.value.hide">
+          <img [src]="menu.value.image" alt="">
+      </div>
+      </ng-container>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+  <!-- <code>
+    <pre>
+      {{  
+        menus | json
+      }}
+    </pre>
+  </code> -->
+</ion-content>

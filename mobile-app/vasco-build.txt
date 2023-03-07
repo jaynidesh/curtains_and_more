@@ -1,0 +1,28 @@
+keytool -genkey -v -keystore vasco-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias vasco
+
+Vasco 2021
+
+What is your first and last name?
+  [Unknown]:  Jay Dudhee
+What is the name of your organizational unit?
+  [Unknown]:  Dev Team
+What is the name of your organization?
+  [Unknown]:  DIIZZ Interactive Ltd
+What is the name of your City or Locality?
+  [Unknown]:  Ebene
+What is the name of your State or Province?
+  [Unknown]:  Quatre Bornes
+What is the two-letter country code for this unit?
+  [Unknown]:  MU
+Is CN=Jay Dudhee, OU=Dev Team, O=DIIZZ Interactive Ltd, L=Ebene, ST=Quatre Bornes, C=MU correct?
+  [no]:  Yes
+
+
+
+FOR ANDROID
+
+ionic cordova build android --prod --release -- -- --packageType=bundle
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vasco-release-key.jks /Users/dudheejay2/Documents/projects/DIIZZ/vasco-conference-app/platforms/android/app/build/outputs/bundle/release/app.aab vasco
+
+/Users/dudheejay2/Library/Android/sdk/build-tools/29.0.3/zipalign -v 4 /Users/dudheejay2/Documents/projects/DIIZZ/vasco-conference-app/platforms/android/app/build/outputs/bundle/release/app.aab /Users/dudheejay2/Documents/projects/DIIZZ/vasco-conference-app/platforms/android/app/build/outputs/bundle/release/Vasco-Release-0.0.3.aab

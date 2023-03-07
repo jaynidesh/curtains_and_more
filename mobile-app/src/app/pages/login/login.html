@@ -1,0 +1,59 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      text=""
+      defaultHref="/tabs/home">
+      </ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <div class="login-logo">
+    <img src="../../../assets/images/le-club-logo.png" alt="">
+  </div>
+
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label position="stacked" color="primary">Email Address</ion-label>
+        <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="login.password" name="password" type="text" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger" class="errorMsg">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          Password is required
+        </p>
+      </ion-text>
+
+
+      
+    </ion-list>
+
+    <ion-row>
+
+        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Sign in</ion-button>
+
+      <!-- <ion-col>
+        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+      </ion-col> -->
+    </ion-row>
+    <ion-row *ngIf="errorMessage">
+      <ion-col>
+        <ion-text color="danger">
+          <p class="ion-padding-start">
+            {{ errorMessage }}
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

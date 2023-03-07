@@ -1,0 +1,67 @@
+keytool -genkey -v -keystore leclub-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias leclub
+
+Password : leClub2022@LECLUB
+
+What is your first and last name?
+  [Unknown]:  Jay Dudhee
+What is the name of your organizational unit?
+  [Unknown]:  Le Club
+What is the name of your organization?s
+  [Unknown]:  Fonciera Immobilier Ltee
+What is the name of your City or Locality?
+  [Unknown]:  Riche Terre
+What is the name of your State or Province?
+  [Unknown]:  Port Louis
+What is the two-letter country code for this unit?
+  [Unknown]:  MU
+Is CN=Jay Dudhee, OU=Le Club, O=Fonciera Immobilier Ltee, L=Riche Terre, ST=Port Louis, C=MU correct?
+  [no]:  Yes
+
+
+
+  ANDROID SCHEME v2
+
+APK
+
+sudo /Users/dudheejay2/Library/Android/sdk/build-tools/29.0.3/zipalign -f 4 /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/apk/release/le-club-app-release-0.0.3-14-12-22.apk
+
+sudo /Users/dudheejay2/Library/Android/sdk/build-tools/29.0.3/apksigner sign --ks leclub-release-key.jks --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/apk/release/le-club-app-release-0.0.3-14-12-22.apk
+
+AAB
+
+ionic cordova build android --prod --release -- -- --packageType=bundle
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore leclub-release-key.jks /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/bundle/release/app-release.aab leclub
+
+sudo /Users/jay/Library/Android/sdk/build-tools/New-Folder-With-Items/android-13/zipalign -v 4 /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/bundle/release/app-release.aab /Users/jay/Documents/Projects/LECLUB/mobile-app/application/2/le-club-mobile-app/platforms/android/app/build/outputs/bundle/release/le-club-app-release-0.0.7.aab
+
+
+//Error "You uploaded an APK or Android App Bundle which has an activity, activity alias, service or broadcast receiver with intent filter, but without the 'android:exported' property set. This file can't be installed on Android 12 or higher. See: developer.android.com/about/versions/12/behavior-changes-12#exported ionic"
+
+Try to correct using android studio
+
+resolved the issue by adding android:exported to plugin xml, android.json and
+
+added these lines in AndroidManifest.xml
+
+<activity android:exported="false" android:name="com.onesignal.NotificationOpenedActivityHMS" />
+<receiver android:exported="false" android:name="com.onesignal.GcmBroadcastReceiver" />
+<receiver android:exported="false" android:name="com.onesignal.BootUpReceiver" />
+<receiver android:exported="false" android:name="com.onesignal.UpgradeReceiver" />
+
+
+
+______
+for refrence
+ <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <activity android:exported="true" />
+            <receiver android:exported="true" />
+            <service android:exported="true" />
+        </edit-config>
+
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <activity android:exported="false" android:name="com.onesignal.NotificationOpenedActivityHMS" tools:node="merge" />
+            <receiver android:exported="false" android:name="com.onesignal.GcmBroadcastReceiver" tools:node="merge" />
+            <receiver android:exported="false" android:name="com.onesignal.BootUpReceiver" tools:node="merge" />
+            <receiver android:exported="false" android:name="com.onesignal.UpgradeReceiver" tools:node="merge" />
+        </edit-config>

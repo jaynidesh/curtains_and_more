@@ -1,0 +1,83 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Contact Us</h1>
+  <div class="content">
+    <div class="banner">
+      <img src="assets/images/banner-contact.jpg" alt="">
+    </div>
+    <div class="content_wrapper">
+      <div class="text-desc">
+        A. Le Club House, Royal Park Ave, Balaclava<br/>
+        T. +230 52 55 08 07<br/>
+        E. info@leclub.mu
+      </div>
+      <div class="contact_form">
+        <h2>Contact form</h2>
+        <div class="form">
+          <!-- first_name: new FormControl("", [Validators.required]),
+      last_name: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.email]),
+      phone: new FormControl("", [Validators.required, Validators.minLength(7)]),
+      message: new FormControl("", [Validators.required]),
+      date_submission : new FormControl(new Date()) -->
+          <form [formGroup]="contactForm" novalidate>
+              <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.first_name.errors">
+                <ion-input type="text" placeholder="Name*" formControlName="first_name"></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf=" submitted && errorControl.first_name.errors || ( errorControl.first_name.dirty || errorControl.first_name.touched ) && errorControl.first_name.errors ">This field is required.</ion-text>
+              <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.last_name.errors">
+                <ion-input type="text" placeholder="Surname*" formControlName="last_name"></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf=" submitted && errorControl.last_name.errors || ( errorControl.last_name.dirty || errorControl.last_name.touched ) && errorControl.last_name.errors ">This field is required.</ion-text>
+ 
+              <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.email.errors">
+                <ion-input type="email" placeholder="Email*" formControlName="email"></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf=" submitted && errorControl.email.errors || ( errorControl.email.dirty || errorControl.email.touched ) && errorControl.email.errors ">This field is required.</ion-text>
+ 
+              <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.phone.errors">
+                <ion-input type="tel" placeholder="Phone*" formControlName="phone"></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf=" submitted && errorControl.phone.errors || ( errorControl.phone.dirty || errorControl.phone.touched ) && errorControl.phone.errors ">This field is required.</ion-text>
+ 
+              <ion-item  lines="none" [class.is-invalid]="submitted && errorControl.message.errors">
+                <ion-textarea type="text" placeholder="message*" formControlName="message" rows="5"></ion-textarea>
+              </ion-item>
+              <ion-text color="danger" *ngIf=" submitted && errorControl.message.errors || ( errorControl.message.dirty || errorControl.message.touched ) && errorControl.message.errors ">This field is required.</ion-text>
+ 
+
+            <ion-item lines="none" class="btn">
+              <ion-button size="small" (click)="submitForm()">SEND</ion-button>
+            </ion-item>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

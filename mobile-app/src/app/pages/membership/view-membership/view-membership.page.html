@@ -1,0 +1,77 @@
+
+<ion-header #header [translucent]="false">
+    <ion-toolbar #toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button
+        text=""
+        defaultHref="/tabs/membership">
+        </ion-back-button>
+        </ion-buttons>
+      <ion-title class="ion-text-center">
+        <img src="assets/images/le-club-logo.png" alt="">
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  
+  </ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button
+          text=""
+          defaultHref="/tabs/membership">
+          </ion-back-button>
+          </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="pageContent">
+    <div class="title">
+      <h2>{{ pageContent.title }}</h2>
+      <h3 *ngIf="pageContent.price">
+        {{ pageContent.price }}
+      </h3>
+    </div>
+    <div class="description">
+      <p [innerHTML]="pageContent.descriptions"></p>
+    </div>
+    <div class="offers">
+      <div class="offer" *ngFor="let offer of pageContent.offers">
+        <img [src]="offer.icon" alt="">
+        <ul>
+          <li *ngFor="let item of offer.items">
+            <h4 [innerHTML]="item.desc"></h4>
+
+            <ng-container *ngIf="item.sub_content">
+              <div [innerHTML]="item.title" class="top_content"></div>
+              <ul>
+                <li *ngFor="let sub_item of item.sub_content">
+                  <div [innerHTML]="sub_item.item"></div>
+                </li>
+                </ul>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <pre>
+      {{ pageContent | json }}
+    </pre> -->
+
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>

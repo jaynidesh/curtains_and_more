@@ -1,0 +1,50 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <img src="assets/images/about-header.png" alt="">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>About</h1>
+  <div class="content">
+    <div class="text-desc" [innerHtml]="content?.description">
+      Le Club has been set up in 2021 by Fonciera Lifestyle Ltd, a subsidiary company of Fonciera Group. The Group focuses on real estate investment, promotion, development and hospitality.<br /><br />
+With a growing property development portfolio and long established business contacts and partners, Fonciera created Le Club to emphasise on the Group's core spirit; “Live & Belong.”<br /><br />
+Initially founded for the Group's business network contacts, Le Club is now open to all Mauritians and expats holding a residence permit in Mauritius.<br /><br /> 
+Le Club members belong to a community inspiring to live life to the fullest whilst enjoying preferential rates, access to world class privileges and leisure activities, invitations to private events and networking events.<br /><br />
+Join Le Club today and start enjoying life with privileges, your new lifestyle awaits!
+    </div>
+    <div class="buttons">
+      <ion-button size="small" routerLink="/tabs/membership">JOIN LE CLUB</ion-button>
+    </div>
+  </div>
+  <div class="emblem">
+    <img src="assets/images/emblem.png" alt="">
+  </div>
+  <!-- <code>
+    <pre>
+      {{  
+        menus | json
+      }}
+    </pre>
+  </code> -->
+</ion-content>

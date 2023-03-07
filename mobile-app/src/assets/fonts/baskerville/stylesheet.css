@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Baskerville';
+    src: url('Baskerville-Regular.eot');
+    src: url('Baskerville-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Baskerville-Regular.woff2') format('woff2'),
+        url('Baskerville-Regular.woff') format('woff'),
+        url('Baskerville-Regular.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

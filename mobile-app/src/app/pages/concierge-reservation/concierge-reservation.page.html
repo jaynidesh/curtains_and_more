@@ -1,0 +1,43 @@
+<ion-header #header [translucent]="false">
+  <ion-toolbar #toolbar>
+    <ion-title class="ion-text-center">
+      <img src="assets/images/le-club-logo.png" alt="">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)='onContentScroll($event)'>
+  <div class="header">
+    <div class="toolbar-wrapper">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+          <img src="assets/images/le-club-logo.png" alt="">
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </div>
+  <h1>Concierge<br/>
+    & Reservation</h1>
+  <div class="content">
+    <div class="grid">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let menu of menus | keyvalue; let i = index" (click)="goToLink(menu.value)">
+            <img src="{{ menu.value.image }}" (click)="goToLink(menu.value)" alt=""><br/>
+            <div [innerHtml]="menu.value.name"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+</div>
+<div class="emblem">
+  <img src="assets/images/emblem.png" alt="">
+</div>
+</ion-content>
